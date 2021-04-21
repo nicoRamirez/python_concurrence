@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import ttk
 import time
+import threading
 
 #Crea la ventana principal
 main_window = tk.Tk()
@@ -30,11 +31,17 @@ def crearAnimacion(a, b, char):
         mylabel.config(text = texto)
         main_window.update_idletasks()
         main_window.update()
+if __name__== '__main__':
+    thead = [crearAnimacion(10,10, 'X'),crearAnimacion(10,30, 'Y'),crearAnimacion(10,50, 'Z')]
+    for i in thead:
+        t = threading.Thread(target=crearAnimacion)
+        t.start
+        
 
 #Ejecuta tres animaciones
-crearAnimacion(10,10, 'X')
-crearAnimacion(10,30, 'Y')
-crearAnimacion(10,50, 'Z')
+#crearAnimacion(10,10, 'X')
+#crearAnimacion(10,30, 'Y')
+#crearAnimacion(10,50, 'Z')
 
 
 # Mantener las siguientes líneas siempre al final del script y en el mismo orden.
